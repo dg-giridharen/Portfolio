@@ -13,6 +13,8 @@ export default function App() {
     <div className="app">
       <Navbar />
       <main>
+
+        
         <Hero />
         <About />
         <Skills />
