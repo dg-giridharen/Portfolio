@@ -1,0 +1,54 @@
+/* ========================================
+   EDUCATION SECTION
+   ======================================== */
+
+.education {
+  position: relative;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-2xl);
+}
+
+.education-card {
+  padding: var(--space-xl);
+  position: relative;
+}
+
+.education-period {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-violet);
+  margin-bottom: var(--space-md);
+}
+
+.education-institution {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+  line-height: 1.3;
+}
+
+.education-degree {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+  line-height: 1.5;
+}
+
+.education-score {
+  display: inline-block;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  padding: 0.3rem 0.75rem;
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-sm);
+}

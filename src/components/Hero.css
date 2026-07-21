@@ -1,0 +1,203 @@
+/* ========================================
+   HERO SECTION
+   ======================================== */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle background gradient orbs */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-container {
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--space-4xl) var(--space-xl) var(--space-2xl);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3xl);
+}
+
+.hero-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3xl);
+  width: 100%;
+}
+
+.hero-avatar-wrapper {
+  flex-shrink: 0;
+}
+
+.hero-avatar {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  padding: 4px;
+  background: var(--accent-gradient);
+  box-shadow: 0 0 40px rgba(124, 58, 237, 0.3);
+  animation: avatarGlow 4s ease-in-out infinite alternate;
+}
+
+.hero-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+
+@keyframes avatarGlow {
+  0% { box-shadow: 0 0 20px rgba(124, 58, 237, 0.2); }
+  100% { box-shadow: 0 0 40px rgba(124, 58, 237, 0.35), 0 0 80px rgba(59, 130, 246, 0.1); }
+}
+
+.hero-text-block {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-greeting {
+  font-size: var(--font-size-lg);
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-sm);
+  letter-spacing: 0.05em;
+}
+
+.hero-name {
+  font-size: var(--font-size-6xl);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: var(--space-md);
+}
+
+.hero-tagline {
+  font-size: var(--font-size-xl);
+  font-weight: 300;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+  letter-spacing: 0.02em;
+}
+
+.hero-tagline span {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.hero-socials {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--space-lg);
+}
+
+.hero-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  transition: var(--transition-base);
+}
+
+.hero-social-link:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-violet);
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.2);
+  transform: translateY(-2px);
+}
+
+.hero-scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--text-tertiary);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--accent-violet), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.7); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+@media (max-width: 900px) {
+  .hero-grid {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-xl);
+  }
+
+  .hero-text-block {
+    text-align: center;
+    align-items: center;
+  }
+
+  .hero-socials {
+    justify-content: center;
+  }
+
+  .hero-avatar {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hero-name {
+    font-size: var(--font-size-5xl);
+  }
+
+  .hero-tagline {
+    font-size: var(--font-size-lg);
+  }
+}

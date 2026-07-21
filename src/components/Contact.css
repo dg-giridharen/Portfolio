@@ -1,0 +1,116 @@
+/* ========================================
+   CONTACT / FOOTER SECTION
+   ======================================== */
+
+.contact {
+  position: relative;
+  text-align: center;
+}
+
+.contact .section-container {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.contact .section-subtitle {
+  margin: 0 auto var(--space-2xl);
+}
+
+.contact-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.85rem 2.25rem;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  font-family: var(--font-family);
+  color: var(--text-primary);
+  background: transparent;
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-base);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.contact-cta-btn:hover {
+  background: rgba(124, 58, 237, 0.1);
+  border-color: var(--accent-violet);
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.2);
+  transform: translateY(-2px);
+}
+
+.contact-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xl);
+  margin-top: var(--space-3xl);
+  flex-wrap: wrap;
+}
+
+.contact-detail {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  transition: var(--transition-fast);
+}
+
+.contact-detail:hover {
+  color: var(--text-primary);
+}
+
+.contact-detail-icon {
+  color: var(--accent-violet);
+  font-size: 1rem;
+}
+
+.contact-socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg);
+  margin-top: var(--space-2xl);
+}
+
+.contact-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--text-tertiary);
+  font-size: 1.1rem;
+  transition: var(--transition-base);
+}
+
+.contact-social-link:hover {
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.contact-footer {
+  margin-top: var(--space-4xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.contact-footer p {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  letter-spacing: 0.05em;
+}
+
+.contact-footer .gradient-text {
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .contact-details {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+}
