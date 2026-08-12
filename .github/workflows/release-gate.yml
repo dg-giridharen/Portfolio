@@ -6,15 +6,12 @@ on:
       - main
       - master
 
-permissions:
-  contents: read
-
 jobs:
   test-release-gate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.1.7
 
       - name: TDS identity: 23f2004871@ds.study.iitm.ac.in
         run: echo "Identity verified for 23f2004871@ds.study.iitm.ac.in"
