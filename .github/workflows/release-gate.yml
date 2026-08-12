@@ -1,0 +1,72 @@
+name: TDS GA7 Release Gate
+
+on:
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  test-release-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: TDS identity: 23f2004871@ds.study.iitm.ac.in
+        run: echo "Identity verified for 23f2004871@ds.study.iitm.ac.in"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install flask requests
+
+      - name: Test release-gate endpoint
+        run: |
+          python -c "
+          from server import app
+          import json
+          client = app.test_client()
+
+          # Test safe payload
+          safe = {
+            'target': 'preview',
+            'event': 'pull_request',
+            'ref': 'refs/heads/feature-branch',
+            'workflow': {
+              'trigger': 'pull_request',
+              'permissions': {'contents': 'read', 'packages': 'write', 'id-token': 'none'},
+              'testsPassed': True,
+              'matrixComplete': True,
+              'failFast': False,
+              'actions': [{'owner': 'actions', 'name': 'checkout', 'ref': 'v4'}]
+            },
+            'image': {
+              'multiStage': True,
+              'runsAsRoot': False,
+              'secretMode': 'none',
+              'criticalVulnerabilities': 0,
+              'digestPinned': True
+            }
+          }
+          resp = client.post('/release-gate', json=safe)
+          result = json.loads(resp.data)
+          assert result['decision'] == 'promote', f'Expected promote, got {result}'
+          assert result['violations'] == [], f'Expected no violations, got {result}'
+          print('PASS: safe payload => promote')
+
+          # Test unsafe payload
+          unsafe = dict(safe)
+          unsafe['workflow'] = dict(safe['workflow'])
+          unsafe['workflow']['testsPassed'] = False
+          resp2 = client.post('/release-gate', json=unsafe)
+          result2 = json.loads(resp2.data)
+          assert result2['decision'] == 'block', f'Expected block, got {result2}'
+          assert 'TESTS_INCOMPLETE' in result2['violations'], f'Expected TESTS_INCOMPLETE, got {result2}'
+          print('PASS: unsafe payload => block with TESTS_INCOMPLETE')
+
+          print('All tests passed!')
+          "
