@@ -8,6 +8,7 @@ on:
 
 jobs:
   test-release-gate:
+    name: TDS identity: 23f2004871@ds.study.iitm.ac.in
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -15,11 +16,3 @@ jobs:
 
       - name: TDS identity: 23f2004871@ds.study.iitm.ac.in
         run: echo "Identity verified for 23f2004871@ds.study.iitm.ac.in"
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Test step
-        run: echo "Release gate workflow execution verified"
